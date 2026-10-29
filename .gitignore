@@ -1,0 +1,14 @@
+# Build output
+bin/
+build/
+*.o
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local test/log files
+*.log
+core

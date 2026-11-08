@@ -2,8 +2,8 @@
 #include "raylib.h"
 #include "stdbool.h"
 void createPlayer(Player *player){
-  player->x = 9;
-  player->y = 5;
+  player->x = MAP_WIDTH/2;
+  player->y = 0;
 }
 
 int getX(Player *player){
@@ -16,7 +16,7 @@ int getY(Player *player){
 
 //make sure it moves inside of the map
 static bool canMove(Player *player, int x, int y){
-  return x>=0 && x<=9 && y>=0 && y<=5;
+  return x>=0 && x<=MAP_WIDTH && y>=0 && y<=MAP_HEIGHT;
 }
 
 static void move(Player *player, int dx, int dy){

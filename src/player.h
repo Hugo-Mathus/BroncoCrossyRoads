@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-typeDef struct{
+typedef struct{
   int x;
   int y;
 } Player;
@@ -9,5 +9,6 @@ typeDef struct{
 void createPlayer(Player *player);
 int getX(Player *player);
 int getY(Player *player);
-void movePlayer(Player *player, int dx, int dy);
+void movePlayer(Player *player);
 
+#endif

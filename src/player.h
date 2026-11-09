@@ -7,8 +7,10 @@ typedef struct{
 } Player;
 
 void createPlayer(Player *player);
-int getX(Player *player);
-int getY(Player *player);
+int getX(const Player *player);
+int getY(const Player *player);
 void movePlayer(Player *player);
+
+void drawPlayer(const Player *player);
 
 #endif

@@ -25,8 +25,8 @@ static int moveInsideX(Player *player, int x){
   if(x<0){
     return 0;
   }
-  else if(x > MAP_W){
-    return MAP_W;
+  else if(x >= MAP_W - PLAYER_SIZE){
+    return MAP_W - PLAYER_SIZE;
   }
   else{
     return x;
@@ -38,8 +38,8 @@ static int moveInsideY(Player *player, int y){
   if(y<0){
     return 0;
   }
-  else if(y > MAP_H){
-    return MAP_H;
+  else if(y >= MAP_H - PLAYER_SIZE){
+    return MAP_H - PLAYER_SIZE;
   }
   else{
     return y;

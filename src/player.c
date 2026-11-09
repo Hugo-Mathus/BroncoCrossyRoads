@@ -9,7 +9,7 @@
 
 void createPlayer(Player *player){
   player->x = (MAP_W - PLAYER_SIZE)/2;
-  player->y = PLAYER_SIZE;
+  player->y = MAP_H - PLAYER_SIZE;
 }
 
 int getX(const Player *player){

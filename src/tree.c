@@ -1,14 +1,14 @@
 #include "tree.h"
 
-void createTree(Tree *tree, int x, int y){
-    tree -> x = x;
-    tree -> y = y;
+void createTree(Tree *tree, float x, float y, float width, float height)
+{
+    tree->rectangle.x = x;
+    tree->rectangle.y = y;
+    tree->rectangle.width = width;
+    tree->rectangle.height = height;
 }
 
-int getTreeX(Tree *tree){
-    return tree->x;
-}
-
-int getTreeY(Tree *tree){
-    return tree->y;
+void drawTree(Tree *tree)
+{
+    DrawRectangleRec(tree->rectangle, DARKGREEN);
 }

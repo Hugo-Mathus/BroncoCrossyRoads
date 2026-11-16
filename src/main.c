@@ -55,6 +55,7 @@ int main ()
 
 	Player player;
 	createPlayer(&player);
+	int score = 0;
 
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
@@ -87,7 +88,7 @@ int main ()
 		drawPlayer(&player);
 
 		// // draw some text using the default font
-		// DrawText("Hello Raylib", 200,200,20,WHITE);
+		DrawText(TextFormat("Score: %d", score), 0,0,20,WHITE);
 
 		// // draw our texture to the screen
 		// DrawTexture(wabbit, 400, 200, WHITE);

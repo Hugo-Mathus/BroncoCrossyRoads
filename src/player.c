@@ -5,6 +5,7 @@
 #define MAP_H GetScreenHeight()
 #define PLAYER_SPEED 3
 #define PLAYER_SIZE 100
+
 //32*32 and player's x y position is for top left corner 
 
 void createPlayer(Player *player){
@@ -12,13 +13,15 @@ void createPlayer(Player *player){
   player->y = MAP_H - PLAYER_SIZE;
 }
 
-int getX(const Player *player){
-  return player->x;
+int getX(const Player *player) {
+    return player->x;
 }
 
-int getY(const Player *player){
-  return player->y;
+int getY(const Player *player) {
+    return player->y;
 }
+
+
 
 //make sure it moves inside of the map
 static int moveInsideX(Player *player, int x){
@@ -79,14 +82,6 @@ void movePlayer(Player *player){
   }
 }
 
-void drawPlayer(const Player *player){
-  DrawRectangle(
-    getX(player),
-    getY(player),
-    PLAYER_SIZE,
-    PLAYER_SIZE,
-    RED
-  );
-}
+
 
 //gcc src/main.c src/player.c -o game -I"$(brew --prefix raylib)/include" -L"$(brew --prefix raylib)/lib" -lraylib

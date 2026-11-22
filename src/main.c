@@ -9,7 +9,9 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 #include "raylib.h"
 #include "player.h"
+#include "tree.h"
 #include <math.h> 
+#include <stdbool.h>
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
 	// 0 - grass
@@ -36,12 +38,15 @@ double getID(int x, int y) {
 }
 
 bool isTree(int x, int y){
-
-	if(fmod(map[y][x]*10,10) == 1){
-		return true;
+	if((x >= 0 || x <= 9) && (y >= 0 || y <= 5)){
+		if(fmod(map[y][x]*10,10) == 1){
+			return true;
+		}
+		return false;
 	}
 
-	return false;
+	return true;
+	
 }
 
 void checkCoins(Player *p) {
@@ -104,6 +109,9 @@ int main ()
 	Player player;
 	createPlayer(&player);
 
+	int x = 0;
+	int y = 0;
+
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
 	{
@@ -145,7 +153,12 @@ int main ()
 		}
 
 
-		movePlayer(&player);
+		// movePlayer(&player);
+		x = getX(&player)/100;
+		y = getY(&player)/100;
+
+
+		movePlayer(&player, isTree(x, y-1), isTree(x, y+1), isTree(x-1, y), isTree(x+1, y) );
 		checkCoins(&player);
 		//Draw player
 		DrawTexture(billy, getX(&player), getY(&player), WHITE);

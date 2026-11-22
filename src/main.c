@@ -12,13 +12,20 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 #include <math.h> 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
+	// 0 - grass
+	// 1 - road
+	// 2 - water
+
+	//0.1 - tree
+	//0.2 - coin
+
 double map[6][10] = {
 		{0.1,0,0,0,0,0,0,0,0,0},
 		{0,0,0,0,0,0,0,0,0,0},
 		{0,0,0.1,0.1,0,0.1,0.1,0,0,0},
 		{1,1,1,1,1.2,1,1,1,1,1},
 		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,0.2,0,0,0.2,0,0,0,0}
+		{0.1,0.1,0.1,0.1,0,0.1,0.1,0.1,0.1,0.1}
 	};
 
 int score = 0;
@@ -70,6 +77,27 @@ int main ()
 	Texture billy = LoadTextureFromImage(billyImage);
 	UnloadImage(billyImage);
 
+	Image coinImage = LoadImage("bc_coin.PNG");
+	ImageResize(&coinImage, 100, 100);
+	Texture coin = LoadTextureFromImage(coinImage);
+	UnloadImage(coinImage);
+
+	Image roadImage = LoadImage("bc_road.PNG");
+	ImageResize(&roadImage, 100, 100);
+	Texture road = LoadTextureFromImage(roadImage);
+	UnloadImage(roadImage);
+
+	Image grassImage = LoadImage("bc_grass.PNG");
+	ImageResize(&grassImage, 100, 100);
+	Texture grass = LoadTextureFromImage(grassImage);
+	UnloadImage(grassImage);
+
+	Image waterImage = LoadImage("bc_water.PNG");
+	ImageResize(&waterImage, 100, 100);
+	Texture water = LoadTextureFromImage(waterImage);
+	UnloadImage(waterImage);
+
+
 	int height = 6;
 	int width = 10;
 
@@ -88,14 +116,19 @@ int main ()
 		for(int i = 0; i < width; i++) {
 			for(int j = 0; j < height; j++) {
 				
-				if((int)map[j][i] == 0) {
-					DrawRectangle(i*100, j*100, 100, 100, GREEN);
-				} else if((int)map[j][i] == 1) {
-					DrawRectangle(i*100, j*100, 100, 100, GRAY);
+				if((int)map[j][i] == 1) {
+					DrawTexture(road, (i*100), (j*100), WHITE);
+					// DrawRectangle(i*100, j*100, 100, 100, GRAY);
+				} else if((int)map[j][i] == 2) {
+					DrawTexture(water, (i*100), (j*100), WHITE);
+				} else {
+					DrawTexture(grass, (i*100), (j*100), WHITE);
+
 				}
 
 			}
 		}
+
 
 		for(int i = 0; i < width; i++) {
 			for(int j = 0; j < height; j++) {
@@ -103,7 +136,8 @@ int main ()
 					DrawTexture(tree, (i*100), (j*100), WHITE);
 					// DrawRectangle((i*100) + 25, (j*100) + 25, 50, 50, DARKGREEN);
 				} else if(fmod(map[j][i]*10,10) == 2) {
-					DrawRectangle((i*100) + 25, (j*100) + 25, 50, 50, YELLOW);
+					DrawTexture(coin, (i*100), (j*100), WHITE);
+					// DrawRectangle((i*100) + 25, (j*100) + 25, 50, 50, YELLOW);
 				}
 
 			}
